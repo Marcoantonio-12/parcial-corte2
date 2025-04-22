@@ -1,34 +1,14 @@
-import React, { useState } from 'react';
-import { IonSelect, IonSelectOption, IonItem, IonLabel } from '@ionic/react';
+import { IonItem, IonLabel, IonSelect, IonSelectOption } from '@ionic/react';
 
-interface Table {
-  id: number;
-  number: number;
-}
-
-interface TableSelectorProps {
-  tables: Table[];
-  onSelect: (tableId: number) => void;
-}
-
-const TableSelector: React.FC<TableSelectorProps> = ({ tables, onSelect }) => {
-  const [selectedTable, setSelectedTable] = useState<number | undefined>(undefined);
-
-  const handleTableSelect = (e: any) => {
-    const tableId = e.detail.value;
-    setSelectedTable(tableId);
-    if (onSelect) onSelect(tableId);
-  };
-
+const TableSelector: React.FC = () => {
   return (
     <IonItem>
-      <IonLabel>Choose a Table</IonLabel>
-      <IonSelect value={selectedTable} onIonChange={handleTableSelect}>
-        {tables.map((table) => (
-          <IonSelectOption key={table.id} value={table.id}>
-            Table {table.number}
-          </IonSelectOption>
-        ))}
+      <IonLabel>Mesa</IonLabel>
+      <IonSelect placeholder="Selecciona una mesa">
+        <IonSelectOption value="Mesa 1">Mesa 1</IonSelectOption>
+        <IonSelectOption value="Mesa 2">Mesa 2</IonSelectOption>
+        <IonSelectOption value="Mesa 3">Mesa 3</IonSelectOption>
+        <IonSelectOption value="Mesa 4">Mesa 4</IonSelectOption>
       </IonSelect>
     </IonItem>
   );
